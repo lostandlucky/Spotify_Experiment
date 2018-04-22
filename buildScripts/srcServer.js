@@ -38,6 +38,10 @@ app.get('/users', function(req, res){
 	]);
 });
 
+app.get('/gettoken', function(req, res){
+	res.redirect('')
+});
+
 //Tell express that we would like it to listen to the port we defined above
 app.listen(port, function(err){
     if (err) {

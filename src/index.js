@@ -1,18 +1,20 @@
 import './index.css';
 //var querystring = require('querystring');
 
-//var express = require('express'); // Express web server framework
+var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 //var querystring = require('querystring');
 //var cookieParser = require('cookie-parser');
 
-var client_id = ''; // Your client id
-var client_secret = ''; // Your secret
+var client_id = '375b888080cf42e0a0ec358d592e3fe4'; // Your client id
+var client_secret = '01171107afd74db8a7856ff00bdbd355'; // Your secret
 
-function callShiz(){
+
+
+
 // your application requests authorization
 var authOptions = {
-  url: 'https://accounts.spotify.com/api/token',
+  res.url: 'https://accounts.spotify.com/api/token',
   headers: {
     'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
   },
@@ -40,7 +42,6 @@ var authOptions = {
 					});
 			}
 	});
-}
 
 
 //why is this not working

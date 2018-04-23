@@ -10,7 +10,10 @@ import express from 'express';
 import path from 'path';
 import open from 'open';
 import webpack from 'webpack';
-import config from '../webpack.config.dev'
+import config from '../webpack.config.dev';
+
+import request from 'request';
+
 /* eslint-disable no-console */
 
 const port = 3000;
@@ -39,7 +42,33 @@ app.get('/users', function(req, res){
 });
 
 app.get('/gettoken', function(req, res){
-	res.redirect('')
+
+	console.log('inside the GET call now')
+	var client_id = '375b888080cf42e0a0ec358d592e3fe4';
+	var client_secret = '01171107afd74db8a7856ff00bdbd355';
+
+	console.log('setting up authOptions');
+	var authOptions = {
+		url: 'https://accounts.spotify.com/api/token',
+		headers: {
+			'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+		},
+		form: {
+			grant_type: 'client_credentials'
+		},
+		json: true
+	};
+
+	console.log('about to request the post')
+	request.post(authOptions, function(error, response, body){
+		if (!error && response.statusCode === 200) {
+			console.log('sucess!!');
+
+			var token = body.access_token;
+			console.log(token);
+			res.end(token);
+		}
+	});
 });
 
 //Tell express that we would like it to listen to the port we defined above

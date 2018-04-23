@@ -17,6 +17,7 @@
   "author": "Steve Day",
   "license": "MIT",
   "dependencies": {
+    "request": "^2.85.0",
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {
